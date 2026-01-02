@@ -5,8 +5,9 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { Text, useColorScheme } from "react-native";
+import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import ThemedText from '../presentation/shared/ThemedText';
 import "./global.css";
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -16,9 +17,8 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{backgroundColor:backgroundColor, flex:1}}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <ThemedView margin>
-          <Text className="mt-10 text-3xl text-light-text dark:text-dark-text">
-            Hola mundo!
-          </Text>
+          <ThemedText type="link" className="mt-10">Hola Mundo!!</ThemedText>
+
         </ThemedView>
       </ThemeProvider>
     </GestureHandlerRootView>
