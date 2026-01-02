@@ -1,15 +1,17 @@
-import { Text, View } from "react-native";
+import { animationMenuRoutes } from "@/constants/Routes";
+import ThemedView from "@/presentation/shared/ThemedView";
+import { Href, Link } from "expo-router";
 
-export default function Index() {
+export default function ComponentsApp() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <ThemedView
+      margin
     >
-      <Text className="text-red-400">Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      {
+        animationMenuRoutes.map((route, index) => (
+          <Link href={route.name.split('/')[0] as Href} key={route.name}>{route.title}</Link>
+        ))
+      }
+    </ThemedView>
   );
 }
