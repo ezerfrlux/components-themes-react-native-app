@@ -1,4 +1,11 @@
-export const menuRoutes = [
+import { Ionicons } from "@expo/vector-icons";
+interface MenuRoute {
+  title: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  name: string;
+}
+
+export const menuRoutes: MenuRoute[] = [
   {
     title: "Pull to refresh",
     icon: "refresh-outline",
@@ -31,7 +38,7 @@ export const menuRoutes = [
   },
 ];
 
-export const uiMenuRoutes = [
+export const uiMenuRoutes: MenuRoute[] = [
   {
     title: "Switches",
     icon: "toggle-outline",
@@ -49,22 +56,21 @@ export const uiMenuRoutes = [
   },
 ];
 
-
-export const animationMenuRoutes = [
-    {
+export const animationMenuRoutes: MenuRoute[] = [
+  {
     title: "Animation 101",
     icon: "cube-outline",
     name: "animation-101/index",
   },
-    {
+  {
     title: "Animation 102",
     icon: "albums-outline",
     name: "animation-102/index",
   },
-]
+];
 
-export const allRoutes = [
+export const allRoutes: MenuRoute[] = [
   ...menuRoutes,
   ...uiMenuRoutes,
-  ...animationMenuRoutes
-]
+  ...animationMenuRoutes,
+];
