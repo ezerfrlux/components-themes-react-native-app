@@ -10,9 +10,9 @@ export default function SwitchesScreen() {
     isHappy: true,
   });
 
-  const toggleSwitch = (value: boolean) => {
-    setSwitchState({ ...switchState, isActive: value });
-  };
+  const [isActive, setIsActive] = useState(true);
+  const [isHungry, setIsHungry] = useState(false);
+  const [isHappy, setIsHappy] = useState(true);
 
   return (
     <ThemedView margin className="mt-2">
@@ -24,10 +24,24 @@ export default function SwitchesScreen() {
           onValueChange={() => toggleSwitch(!switchState.isActive)}
           value={switchState.isActive}
         /> */}
-        <ThemedSwitch 
-          text="Activo"
-          onValueChange={() => toggleSwitch(!switchState.isActive)}
-          value={switchState.isActive}
+        <ThemedSwitch
+          text="Active"
+          onValueChange={() => setIsActive(!isActive)}
+          value={isActive}
+          className="mb-4"
+        />
+        <ThemedSwitch
+          text="Hungry"
+          onValueChange={() => setIsHungry(!isHungry)}
+          value={isHungry}
+          className="mb-4"
+
+        />
+        <ThemedSwitch
+          text="Happy"
+          onValueChange={() => setIsHappy(!isHappy)}
+          value={isHappy}
+
         />
       </ThemedCard>
     </ThemedView>
