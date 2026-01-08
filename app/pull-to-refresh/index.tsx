@@ -1,10 +1,43 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import { useThemeColor } from "@/hooks/useThemeColor";
+import ThemedText from "@/presentation/shared/ThemedText";
+import ThemedView from "@/presentation/shared/ThemedView";
+import React, { useState } from "react";
+import { ScrollView } from "react-native";
+import { RefreshControl } from "react-native-gesture-handler";
 
 export default function PullToRefreshScreen() {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const backgroundColor = useThemeColor(
+    {
+      dark: "black",
+      light: "white",
+    },
+    "background"
+  );
+  const primaryColor = useThemeColor({}, "primary");
+
+  const onRefresh = () => {
+    setIsRefreshing(true);
+
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 3000);
+  };
+
   return (
-    <View>
-      <Text>PullToRefreshScreen</Text>
-    </View>
-  )
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={isRefreshing}
+          onRefresh={onRefresh}
+          colors={[primaryColor, "red", "orange", "green"]}
+          progressBackgroundColor={backgroundColor}
+        />
+      }
+    >
+      <ThemedView margin>
+        <ThemedText>PullToRefreshScreen</ThemedText>
+      </ThemedView>
+    </ScrollView>
+  );
 }
