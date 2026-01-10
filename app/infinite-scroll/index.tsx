@@ -1,9 +1,12 @@
+import { useThemeColor } from '@/hooks/useThemeColor'
 import ThemedView from '@/presentation/shared/ThemedView'
 import React, { useState } from 'react'
-import { Image } from 'react-native'
+import { ActivityIndicator, Image, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 export default function InfiniteScrollScreen() {
+
+  const primaryColor = useThemeColor({}, 'primary')
 
   const [numbers, setNumbers] = useState([0,1,2,3,4,5])
 
@@ -25,6 +28,11 @@ export default function InfiniteScrollScreen() {
         }
         onEndReached={loadMore}
         onEndReachedThreshold={0.6}
+        ListFooterComponent={() => (
+          <View style={{height:150, justifyContent:'center'}}>
+            <ActivityIndicator size={40} color={primaryColor}/>
+          </View>
+        )}
       />
     </ThemedView>
   )
