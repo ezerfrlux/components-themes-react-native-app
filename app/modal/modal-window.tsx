@@ -13,7 +13,12 @@ const ModalScreen = () => {
     >
       <ThemedText>Hello Im a Modal</ThemedText>
 
-      <ThemedButton onPress={() => router.push("/modal/modal-window-2")} className="my-4">Other Modal</ThemedButton>
+      <ThemedButton
+        onPress={() => router.push("/modal/modal-window-2")}
+        className="my-4"
+      >
+        Other Modal
+      </ThemedButton>
       <ThemedButton onPress={() => router.dismiss()}>Close Modal</ThemedButton>
 
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
